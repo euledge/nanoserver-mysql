@@ -34,7 +34,7 @@ RUN \
     \
     Expand-Archive \
     -Path "C:\\Temp\\mysql-$ENV:MYSQL_VERSION.zip" \
-    -DestinationPath "C:\Program Files" \
+    -DestinationPath 'C:\Program Files' \
     -Verbose ; \
     \
     Set-ItemProperty \
