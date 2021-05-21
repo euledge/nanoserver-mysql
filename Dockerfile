@@ -35,8 +35,10 @@ RUN \
     Expand-Archive \
     -Path "C:\\Temp\\mysql-$ENV:MYSQL_VERSION.zip" \
     -DestinationPath 'C:\Program Files' \
-    -Verbose ; \
-    \
+    -Verbose ;
+
+USER USER ContainerAdministrator
+RUN \
     Set-ItemProperty \
     -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment' \
     -Name 'MYSQL_HOME' \
@@ -48,6 +50,7 @@ RUN \
     -Name 'Path' \
     -Value $($ENV:Path + ';C:\Program Files\mysql-' + $ENV:MYSQL_VERSION + '\bin') \
     -Verbose ;
+USER ContainerUser
 
 # Test application
 RUN mysql -version
