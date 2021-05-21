@@ -40,7 +40,7 @@ RUN \
     Set-ItemProperty \
     -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment' \
     -Name 'MYSQL_HOME' \
-    -Value "C:\Program Files\mysql-$ENV:MYSQL_VERSION" \
+    -Value 'C:\Program Files\mysql-' + "$ENV:MYSQL_VERSION" \
     -Verbose ; \
     \
     Set-ItemProperty \
