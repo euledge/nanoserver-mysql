@@ -53,7 +53,7 @@ RUN \
 USER ContainerUser
 
 # Test application
-RUN mysql -version
+RUN mysql --version
 
 # Remove temporary items from the build image
 RUN \
