@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/windows/nanoserver:1809 AS build
+ARG NANOSERVER_VERSION=lts-nanoserver-1809
+FROM mcr.microsoft.com/powershell:${NANOSERVER_VERSION} AS  build
 
 LABEL \
     org.label-schema.name="NanoServer-MySQL" \
@@ -13,7 +14,7 @@ LABEL \
     org.label-schema.docker.params="OPENJDK_VERSION=version number"
 
 ARG MYSQL_VERSION=8.0.24-winx64
-SHELL ["powershell", "-Command"]
+SHELL ["pwsh", "-Command"]
 
 RUN \
     if(!(Test-Path -Path 'C:\Temp')) \
@@ -22,8 +23,9 @@ RUN \
     -Path 'C:\Temp' \
     -ItemType Directory \
     -Verbose | Out-Null ; \
-    } ; \
-    \
+    } ;
+
+RUN \
     Invoke-WebRequest \
     -Uri "https://downloads.mysql.com/archives/get/p/23/file/mysql-$ENV:MYSQL_VERSION.zip" \
     -OutFile "C:\\Temp\\mysql-$ENV:MYSQL_VERSION.zip" \
