@@ -37,7 +37,7 @@ RUN \
     -DestinationPath 'C:\Program Files' \
     -Verbose ;
 
-USER USER ContainerAdministrator
+USER ContainerAdministrator
 RUN \
     Set-ItemProperty \
     -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment' \
