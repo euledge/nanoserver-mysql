@@ -13,7 +13,7 @@ LABEL \
     org.label-schema.docker.cmd="docker run --name $CONTAINER -t -d nanoserver-mysql:latest" \
     org.label-schema.docker.params="OPENJDK_VERSION=version number"
 
-ARG MYSQL_VERSION=8.0.24-winx64
+ARG MYSQL_VERSION=8.0.25-winx64
 SHELL ["pwsh", "-Command"]
 
 RUN \
@@ -27,7 +27,7 @@ RUN \
 
 RUN \
     Invoke-WebRequest \
-    -Uri "https://downloads.mysql.com/archives/get/p/23/file/mysql-$ENV:MYSQL_VERSION.zip" \
+    -Uri "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-$ENV:MYSQL_VERSION.zip" \
     -OutFile "C:\\Temp\\mysql-$ENV:MYSQL_VERSION.zip" \
     -UseBasicParsing \
     -Verbose ; \
